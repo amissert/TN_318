@@ -1,0 +1,71 @@
+
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{subfig}
+%\usepackage{cite}
+%\usepackage{biblatex}
+\usepackage{natbib}
+%\usepackage{subfigure}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\graphicspath{{plots/}}
+\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{xspace}
+
+%% MY SHORTCUTS %%
+\def\numu{$\nu_{\mu}$\xspace}
+\def\nue{$\nu_{e}$\xspace}
+\def\thapp{$\theta_{13}$\xspace}
+\def\thdis{$\theta_{23}$\xspace}
+\def\dcp{$\delta_{CP}$\xspace}
+\def\dm{$\Delta m^{2}_{23}$\xspace}
+\def\ldsk{$\mathbf{d_{SK}}$\xspace}
+\def\dsk{\mathbf{d_{SK}}\xspace}
+\def\wall{\emph{wall}\xspace}
+\def\towall{\emph{towall}\xspace}
+
+
+
+\begin{document}
+\title{Super-K Atmospheric Neutrino Fit for Optimization of fiTQun Fiducial
+Volume Cuts and Estimation fiTQun Detector Uncertainties}
+\author{Andrew Missert\\University of Colorado, Boulder\\andrew.missert@colorado.edu}
+\date{March 2017}
+\maketitle
+
+%-----------------------------------------------------------------------------
+\input{abstract}
+
+%-----------------------------------------------------------------------------
+\include{sec_intro}
+
+%-----------------------------------------------------------------------------
+\include{sec_atmfit}
+
+%-----------------------------------------------------------------------------
+\include{sec_fitresults}
+
+%-----------------------------------------------------------------------------
+\include{sec_fvopt}
+
+%-----------------------------------------------------------------------------
+\include{sec_skerr}
+
+%-----------------------------------------------------------------------------
+\include{sec_conclusions}
+
+%-----------------------------------------------------------------------------
+\bibliography{bib}{}
+\bibliographystyle{plain}
+
+
+
+%-----------------------------------------------------------------------------
+\end{document}
+
+
+
+

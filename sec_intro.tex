@@ -1,0 +1,48 @@
+
+\section{Introduction}
+\label{subsec:intro}
+
+This technical note describes an analysis to determine both the optimal fiTQun
+fiducial volume cuts and the detector systematics for the fiTQun-only T2K event
+selection.  To achieve these goals, a fit to the Super Kamiokande (SK)
+atmospheric neutrino data is performed using Markov chain Monte Carlo (MCMC)
+techniques.  The result of this fit is a sampling of detector systematics
+parameters that yield the best agreement between the SK atmospheric data and the
+corresponding Monte Carlo simulated data (MC).
+
+The detector systematics are then propagated to the fiTQun T2K event selections
+using toy Monte Carlo studies where samples of the post-fit systematics parameters are
+applied.  We can then quantify how these parameters affect the overall event
+rates in each T2K sample, and this uncertainty is then quantified as a covariance matrix
+and passed on to additional SK detector error studies and, eventually, the T2K
+oscillation analyses.
+
+By allowing the detector systematics parameters to vary independently in
+different SK detector regions, we can determine how the systematic uncertainties
+change near the inner detector (ID) boundary.  This information is then used to determine
+the optimal fiducial volume (FV) cuts for the fiTQun-only T2K samples.
+
+The structure of this analysis is largely based on the previous fits to SK atmospheric data
+described in detail in, for example, T2K TN-186~\cite{tn186}.  However, to address the challenges of
+estimating detector systematics in different detector regions, 
+significant modifications have been made. The key differences include:
+%
+\begin{itemize}
+  \item The parameterization of the detector uncertainties is expanded to allow
+    different regions of the detector to have independent 
+    parameters.
+  \item The full distribution of each of the fiTQun cut variables is used in
+    the fit, instead of just the number of events that pass or fail a particular
+    cut (the ``core'' and ``tail'' samples in the language of TN-186).  
+  \item An additional set of multiplicative parameters is used to give the fit
+    further flexibility to account for data/MC differences in the shape of the
+    cut variable distributions.
+  \item Changes to the MCMC methods have been made to significantly speed up
+    evaluation of each step and deal with the strong correlations present with
+    the new parameterization
+\end{itemize}
+%
+These features are discussed in detail in the following sections.
+
+
+
