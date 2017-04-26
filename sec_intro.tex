@@ -3,29 +3,52 @@
 \label{subsec:intro}
 
 This technical note describes an analysis to determine both the optimal fiTQun
-fiducial volume cuts and the detector systematics for the fiTQun-only T2K event
-selection.  To achieve these goals, a fit to the Super Kamiokande (SK)
+fiducial volume cuts and the detector systematics for the fiTQun-only selection
+of Super-Kamiokande neutrino events for the T2K experiment.  The fiTQun event
+reconstruction algorithm uses a maximum-likelihood approach that is
+substantially different from the previous event reconstruction methods that
+have been used for the T2K analyses.  Details on the fiTQun reconstruction
+algorithm and its performance can be found in technical notes
+TN-146~\cite{tn146} and TN-153~\cite{tn153}.  The optimization of the fiTQun
+topological cuts for  T2K events is described in TN-319~\cite{tn319}.  This
+study of the fiTQun fiducial volume (FV) cuts is largely motivated by the
+following observations:
+
+\begin{itemize}
+  \item The fiTQun algorithm features improved resolution of the neutrino interaction vertex.
+  \item Studies of simulated data show the fiTQun reconstruction performance is not adversely affected
+    in some detector regions rejected by the previous FV cut, which is 200 cm from the inner detector
+    optical boundary.
+  \item A rigorous optimization of the FV cuts that tries to take systematic uncertainties into account
+    has not been done before.
+  \item Approximately 30\% of the SK detector mass is located outside of the 200 cm FV cut.
+  \item The T2K experimental sensitivity is currently limited by statistical uncertainties.
+\end{itemize}
+
+The most significant obstacle to performing this study is the
+estimation of the detector systematic uncertainties, which must be factored
+into the optimization somehow and may vary in different detector regions.
+To address this problem, a fit to the SK
 atmospheric neutrino data is performed using Markov chain Monte Carlo (MCMC)
 techniques.  The result of this fit is a sampling of detector systematics
-parameters that yield the best agreement between the SK atmospheric data and the
-corresponding Monte Carlo simulated data (MC).
+parameters that yield the best agreement between the SK atmospheric data and
+the corresponding Monte Carlo simulated data (MC).
 
 The detector systematics are then propagated to the fiTQun T2K event selections
-using toy Monte Carlo studies where samples of the post-fit systematics parameters are
-applied.  We can then quantify how these parameters affect the overall event
-rates in each T2K sample, and this uncertainty is then quantified as a covariance matrix
-and passed on to additional SK detector error studies and, eventually, the T2K
-oscillation analyses.
+using toy Monte Carlo studies where samples of the post-fit systematics
+parameters are applied.  By allowing the detector systematic uncertainty
+parameters to vary independently in different SK detector regions, we can
+determine the impact of allowing events from the different regions into the T2K
+samples.  This information is used to determine the optimal fiducial volume
+cuts. Once the fiTQun FV and topological cuts are specified, a similar set of
+toy MC studies can be done to propagate the overall SK detector uncertainties
+to the oscillation analyses.
 
-By allowing the detector systematics parameters to vary independently in
-different SK detector regions, we can determine how the systematic uncertainties
-change near the inner detector (ID) boundary.  This information is then used to determine
-the optimal fiducial volume (FV) cuts for the fiTQun-only T2K samples.
-
-The structure of this analysis is largely based on the previous fits to SK atmospheric data
-described in detail in, for example, T2K TN-186~\cite{tn186}.  However, to address the challenges of
-estimating detector systematics in different detector regions, 
-significant modifications have been made. The key differences include:
+The structure of this analysis is largely based on the previous fits to SK
+atmospheric data described in detail in, for example, T2K TN-186~\cite{tn186}.
+However, to address the challenges of estimating detector systematics in
+different detector regions, significant modifications have been made. The key
+differences include:
 %
 \begin{itemize}
   \item The parameterization of the detector uncertainties is expanded to allow

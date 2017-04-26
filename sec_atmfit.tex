@@ -66,7 +66,7 @@ The $\beta^{1}$, on the other hand, is a ``smearing'' parameter that adjusts
 the $L_{m}$ distribution to be wider (for $\beta^{1} > 1$) or narrower (for
 $\beta^{1} < 1$).  This multiplicative scaling parameter is introduced to
 provide additional flexibility to fit for data/MC differences.  This especially
-important in in this analysis, since we will be fitting to the entire
+important in this analysis, since we will be fitting to the entire
 distribution shape (see Section~\ref{subsec:parlike}).
 
 \begin{table}
@@ -201,26 +201,26 @@ provide a constraint on it's distribution shapes.  The component definitions
 chosen for this analysis are shown in Table~\ref{tab:components}.  These
 components are defined purely in terms of their visible rings (as opposed to
 the underlying interaction mode or particle type) since fiTQun is directly
-sensitive to this information.The visible rings are counted by iterating
-through the VCWORK and CONVVECT particle stacks and identifying the particles
-above Cherenkov threshold.
+sensitive to this information.  The visible rings are counted by iterating
+through the simulated particles that exit the nucleus and identifying those
+that are above Cherenkov threshold.
 
 \begin{table}
   \centering
   \begin{tabular}{c | c | l }
     \hline\hline
-    MC Component $k$ & Name & Definition \\
+    MC Component $k$ & Name & Definition (from MC truth) \\
     \hline
     0 & Single Electron & Single visible electron ring \\
     1 & Single Muon & Single visible muon ring  \\
-    2 & Electron + Other & Visible electron ring with other visible rings  \\
-    3 & Muon + Other & Visible muon ring with other visible rings  \\
-    5 & Single $\pi^{0}$ & Single visible $\pi^{0}$  \\
-    6 & Single Hadron &Single visible proton or pion  \\
+    2 & Electron-like + Other & Visible electron ring with other visible rings  \\
+    3 & Muon-like + Other & Visible muon ring with other visible rings  \\
+    4 & Single $\pi^{0}$ & Single visible $\pi^{0}$  \\
+    5 & Single Hadron &Single visible proton or pion  \\
     \hline\hline
   \end{tabular}
   \caption{Definitions of the MC components that are used in the atmospheric
-  fit.  Each component is defined based on the visible topology. Each of these
+  fit.  Each component is defined based on the true visible topology. Each of these
   components receives a separate set of the $\beta$ parameters described in
   Section~\ref{subsec:betapar}. }
   \label{tab:components}
@@ -244,7 +244,7 @@ wall.  The definitions are sketched out in Figure~\ref{fig:fvdiag}.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.5\textwidth]{wall_towalldef}
+    \includegraphics[width=0.5\textwidth]{wall_towall_def}
   \end{center}
   \caption{Graphical illustration of the definitions of the \wall and \towall variables
   that are cut on for the fiTQun FV cuts.  The \wall variable is the minimum distance between
@@ -268,12 +268,12 @@ be cut from the T2K sample.
     \hline\hline
     Detector Region $j$ & Min. \towall & Max. \towall & Min. \wall & Max. \wall \\
     \hline\hline
-    1 & 0cm    & 300  cm  & 0    cm & 300 cm \\
-    2 & 300 cm & 5000 cm  & 0    cm & 80   cm \\
-    3 & 300 cm & 800  cm  & 80   cm & 200 cm \\
-    4 & 800 cm & 5000  cm & 80   cm & 200 cm \\
-    5 & 300 cm & 800  cm  & 200  cm & 800 cm \\
-    6 & 800 cm & 5000  cm & 200  cm & 5000 cm \\
+    0 & 0cm    & 300  cm  & 0    cm & 300 cm \\
+    1 & 300 cm & 5000 cm  & 0    cm & 80   cm \\
+    2 & 300 cm & 800  cm  & 80   cm & 200 cm \\
+    3 & 800 cm & 5000  cm & 80   cm & 200 cm \\
+    4 & 300 cm & 800  cm  & 200  cm & 800 cm \\
+    5 & 800 cm & 5000  cm & 200  cm & 5000 cm \\
     \hline\hline
   \end{tabular}
   \caption{Definitions of the detector region bins in terms of \wall and \towall.}
@@ -281,13 +281,13 @@ be cut from the T2K sample.
 \end{table}
 
 \begin{figure}
-  \label{fig:fvbin}
   \begin{center}
-    \includegraphics[width=0.5\textwidth]{hdr_binning}
+    \includegraphics[width=0.5\textwidth]{plt_fvbins_labeled.pdf}
   \end{center}
   \caption{Graphical depiction of the detector region bins in terms of \wall
   and \towall.  Note that this plot is zoomed in on the small \wall and small
   \towall region.}
+  \label{fig:fvbindef}
 \end{figure}
 
 A precise optimization of the fiTQun FV cuts requires knowledge of the SK
@@ -295,12 +295,17 @@ detector systematics in various regions of \wall and \towall.  To obtain this
 information, we break up the $(towall,wall)$ space into bins and fit the
 detector systematics in each bin separately.  The nominal binning in
 \wall-\towall space is listed in Table~\ref{tab:fvbins} and shown in
-Figure~\ref{fig:fvbin}.  This binning was chosen to provide sensitivity to how
-the systematic uncertainties change in key detector regions, while also
+Figure~\ref{fig:fvbindef}.  This binning was chosen to provide sensitivity to
+how the systematic uncertainties change in key detector regions, while also
 providing enough data statistics in each bin to constrain the parameters that
-describe the uncertainties. Each bin in Figure~\ref{fig:fvbin} will receive an
-independent set of $\beta$ parameters that descibe the fiTQun distribution
-shapes as described in Section~\ref{subsec:betapar}.
+describe the uncertainties.  The events with both small \wall and small
+\towall, (less than 300 cm) are isolated in the $j = 0$ FV bin.  Entering
+background events, and events with poor energy reconstruction are almost
+completely contained in the $j = 1$ FV bin.  The remaining region that with
+\wall < 200cm is divided into two \towall bins.  Each bin in
+Figure~\ref{fig:fvbindef} will receive an independent set of $\beta$ parameters
+that describe the fiTQun distribution shapes as described in
+Section~\ref{subsec:betapar}.
 
 
 
@@ -328,11 +333,14 @@ resolution of the systematic error uncertainties for each individual component.
 Examples of how the MC components are distributed in each sample can be seen in
 Figure~\ref{fig:samplot0} through Figure~\ref{fig:samplot2}.
 
-Since any mis-modeling of the Cherenkov rings should be independant of the
+Since the shifts in the fiTQun likelihood distributions should be independent of the
 number of sub-events, we do not assign independent systematic error parameters
 based on these samples. Instead, we introduce an overall normalization
 parameter for each sample, denoted as $\gamma_{j,l}$, that scales the total
-number of events for the $l$-th sample in the $j$-th detector region bin. 
+number of events for the $l$-th sample in the $j$-th detector region bin.  The systematic 
+uncertainties associated with the decay electron tagging efficiency have been
+evaluated with a a separate study on stopping cosmic muon data and are
+described in TN-217~\cite{tn317}.
 
 \begin{table}
   \centering
@@ -342,18 +350,17 @@ number of events for the $l$-th sample in the $j$-th detector region bin.
     \hline
     1 & fqnse = 1 \\
     2 & fqnse = 2 \\
-    3 & fqnse $<$ 2 \\
+    3 & fqnse $>$ 2 \\
     \hline\hline
   \end{tabular}
   \caption{The sample cuts that are applied to both data and MC events. The
   fqnse variable is the number fiTQun sub-events. The number of decay electrons
-  is 1 - fqnse. }
+  is $fqnse -1$. }
   \label{tab:samples}
 \end{table}
 
 
 \begin{figure}[h!]
-\label{fig:samplot0}
 \centering
 \begin{tabular}{l  l  l}
   \includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_0_bin_0_att_0} 
@@ -363,16 +370,15 @@ number of events for the $l$-th sample in the $j$-th detector region bin.
   &\includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_0_bin_4_att_0} 
   &\includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_0_bin_5_att_0}  
 \end{tabular}
-\caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $0$-th
+\caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $l = 0$
 sample (no decay electrons) in all of the detector regions described in
 Section~\ref{subsec:DR}.  In this sample, the single ring electron component
-(defined in Section~\ref{subsec:components}) is emphasized. The shifts in the
-distributions are also evident in the regions with small \wall and small
+(defined in Section~\ref{subsec:components}) is emphasized. 
 \towall.}
+\label{fig:samplot0}
 \end{figure}
 
 \begin{figure}[h!]
-\label{fig:samplot1}
 \centering
 \begin{tabular}{l  l  l}
   \includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_1_bin_0_att_0} 
@@ -382,15 +388,15 @@ distributions are also evident in the regions with small \wall and small
   &\includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_1_bin_4_att_0} 
   &\includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_1_bin_5_att_0} 
 \end{tabular} 
-\caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $0$-th
-sample (no decay electrons) in all of the detector regions described in
+\caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $l = 1$
+sample (one decay electron) in all of the detector regions described in
 Section~\ref{subsec:DR}.  In this sample, the single ring muon and multi-ring
 electron components (defined in Section~\ref{subsec:components}) are
 emphasized.}
+\label{fig:samplot1}
 \end{figure}
 
 \begin{figure}[h!]
-\label{fig:samplot2}
 \centering
 \begin{tabular}{l  l  l}
   \includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_2_bin_0_att_0} 
@@ -400,10 +406,11 @@ emphasized.}
   &\includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_2_bin_4_att_0} 
   &\includegraphics[width=0.33\textwidth]{plots/mc_breakdown_comp_2_bin_5_att_0} 
 \end{tabular} 
-\caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $0$-nd
-sample (more than one decay electrons) in all of the detector regions described in
+\caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $l=2$ 
+sample (more than one decay electron) in all of the detector regions described in
 Section~\ref{subsec:DR}.  In this sample, the multi-ring muon component
 (defined in Section~\ref{subsec:components}) is emphasized.}
+\label{fig:samplot2}
 \end{figure}
 \FloatBarrier
 
@@ -428,8 +435,8 @@ parameters:
   \{\alpha_{n}, \beta_{j,k,m}^{i}, \gamma_{j,l} \}
 \end{equation}
 
-Where $i \in \{1,2\}$ denotes the multiplicative or additive shape parameter
-described in Section~\ref{subsec:betapar}, $j \in \{1,2,3,4,5,6\}$ denotes the
+Where $i \in \{0,1\}$ denotes the additive or multiplicative shape parameter
+described in Section~\ref{subsec:betapar}, $j \in \{0,1,2,3,4,5\}$ denotes the
 detector region bin, $k \in \{0,1,2,3,4,5\}$ denotes the MC component described
 in Section~\ref{subsec:components},  $l \in \{0,1,2\}$ denotes the sample
 described in Section~\ref{subsec:samples}, and $m \in \{0,1,2,3\}$ denotes the
@@ -454,7 +461,7 @@ previous atmospheric fits, such as the one described in TN-186, the parameters
 are constrained by comparing the numbers of events that either pass or fail the
 cuts on the reconstructed variables.  This amounts to essentially binning each
 of the cut variables into two bins separated by the optimal cut chosen for the
-T2K analysis.  We modify this approach by fitting the to the full distributions
+T2K analysis.  We modify this approach by fitting to the full distributions
 of the fiTQun cut variables listed in Table~\ref{tab:fqvars}.
 
 There are several advantages to fitting to the entire cut variable
@@ -495,7 +502,6 @@ $s$, assuming Poisson statistics in each bin:
 \begin{gather*}
   \label{eq:logpoisson}
   -log[P( \mathbf{h}^{Data} | \mathbf{h}^{MC}(\alpha,\beta,\gamma))] = \\
-%  -log[P( h^{Data}_{j,l,m} | h^{MC}_{j,l,m}(\alpha,\beta,\gamma))] = \\
     \sum\limits_{s}^{} \sum\limits_{j}^{} \sum\limits_{l}^{} \sum\limits_{m}^{} 
    \bigg[ (\hat{N}_{s,j,l,m}(\alpha,\beta,\gamma) - N_{s,j,l,m}) +
   N_{s,j,l,m}log\bigg(\frac{N_{s,j,l,m}}{\hat{N}_{s,j,l,m}(\alpha,\beta,\gamma)}\bigg)\bigg]
@@ -503,17 +509,24 @@ $s$, assuming Poisson statistics in each bin:
 %
 where $N_{s}$ denotes the observed contents of the histogram bin $s$, and
 $\hat{N}_{s}$ denotes the MC expectation (assumed to be the Poisson mean) of
-histogram bin $s$ given the values of the systematics parameters.
+histogram bin $s$ given the values of the systematics parameters.  The
+histogram bin widths, as well as the maximum and minimum values of the
+histogram $x$-axis, were chosen to obtain reasonable data statistics in each
+bin, as well as to emphasize the regions near the T2K cut values, where any
+shift will have the largest impact on the size and composition of the event
+samples.  The exact histogram ranges and bin size can be seen most readily in 
+Figures~\ref{fig:fitresults_samp0_att0}-~\ref{fig:fitresults_samp2_att3} found in 
+Section~\ref{sec:fitresults}.
 
-The remaining terms are the priors for each of the fit parameters.  We assume
-each prior is a Gaussian distribution with some width $\sigma$ around the
-nominal parameter values.  For the atmospheric flux and cross section
-parameters $\alpha$, we take $\sigma_{\alpha_{n}}$ to be the values listed in
-Table~\ref{tab:alpha}.  For the detector systematics parameters $\beta$ we
-assign the priors listed in Table~\ref{tab:betaprior}.  These priors are
-chosen to provide a loose constraint that does not dominate over the
-constraints from data, but also to keep the parameters constrained from moving
-to values that are much more extreme values.  We can then expand
+The remaining terms in the likelihood are the priors for each of the fit
+parameters.  We assume each prior is a Gaussian shape with some width
+$\sigma$ around the nominal parameter values.  For the atmospheric flux and
+cross section parameters $\alpha$, we take $\sigma_{\alpha_{n}}$ to be the
+values listed in Table~\ref{tab:alpha}.  For the detector systematics
+parameters $\beta$ we assign the priors listed in Table~\ref{tab:betaprior}.
+These priors are chosen to provide a loose constraint that does not dominate
+over the constraints from data, but also to keep the parameters constrained
+from moving to values that are much more extreme values.  We can then expand
 the terms for the priors as:
 %
 \begin{gather*}
@@ -526,35 +539,38 @@ the terms for the priors as:
   \bigg(\frac{(\beta_{j,l,m}^{i} - \delta_{i1})}{\sigma_{\beta_{m}}}\bigg)^{2}  
 \end{gather*}
 %
-Putting of this all together, we wish to minimize the following negative log-likelihood:
+Putting of this all together, we wish to minimize the following negative log-likelihood, which is a
+sum of $1,134$ terms:
 %
 \begin{equation}
  \begin{gathered}
-  \label{eq:likefull}
-  -log[\mathcal{L}(\alpha,\beta,\gamma | \mathbf{h}^{Data}  )] =
-  \sum\limits_{s}^{} \sum\limits_{j}^{} \sum\limits_{l}^{} \sum\limits_{m}^{}
+  -log[\mathcal{L}(\alpha,\beta,\gamma | \mathbf{h}^{Data}  )] = \\
+  \sum\limits_{s}^{} \sum\limits_{i}^{}  \sum\limits_{j}^{} \sum\limits_{l}^{} \sum\limits_{m}^{} \sum\limits_{n}^{}
   \bigg[ (\hat{N}_{s,j,l,m}(\alpha,\beta,\gamma) - N_{s,j,l,m})
     + N_{s,j,l,m}log\bigg(\frac{N_{s,j,l,m}}{\hat{N}_{s,j,l,m}(\alpha,\beta,\gamma)}\bigg) \\
-  +\frac{1}{2} \sum\limits_{n}^{} \bigg(\frac{(\alpha_{n} - 1)}{\sigma_{\alpha_{n}}}\bigg)^{2}
+  + \frac{1}{2}\bigg(\frac{(\alpha_{n} - 1)}{\sigma_{\alpha_{n}}}\bigg)^{2}
   + \frac{1}{2}\bigg(\frac{(\gamma_{j,l} - 1)}{\sigma_{\gamma_{j,l}}}\bigg)^{2} 
   + \frac{1}{2}\bigg(\frac{(\beta_{j,l,m}^{i} - \delta_{i1})}{\sigma_{\beta_{m}}}\bigg)^{2} \bigg] 
  \end{gathered}
+ \label{eq:likefull}
 \end{equation}
 
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{c|c}
+  \begin{tabular}{c|c|c}
    \hline\hline
-   fiTQun Variable $m$ & Prior Constraint $\sigma_{\beta_{m}}$ \\
+   $m$ & fiTQun Variable Name & Prior Constraint $\sigma_{\beta_{m}}$ \\
    \hline\hline
-   0 & 200 \\
-   1 & 200 \\
-   2 & 200 \\
-   3 & 100 \\
+   0 & $e/\mu$ PID & 200 \\
+   1 & $e/\pi^{0}$ PID & 200 \\
+   2 & $\mu/\pi$ PID & 200 \\
+   3 & Ring-Counting &100 \\
    \hline\hline
   \end{tabular}
-  \caption{Loose prior constraints assigned to the detector systematics parameters.}
+  \caption{Loose prior constraints assigned to the detector systematics parameters. The
+  constraint values are dimensionless and reflect the scales of the fiTQun likelihood ratios
+  for each variable.}
   \label{tab:betaprior}
 \end{table}
 
@@ -568,8 +584,9 @@ Putting of this all together, we wish to minimize the following negative log-lik
 \label{subsec:evalike}
 
 While perhaps formally imposing, the likelihood defined explicitly in
-Equation~\ref{eq:likefull} can be calculated numerically in a straightforward
-manner:
+Equation~\ref{eq:likefull} simply compares the data and MC by chopping the
+events up into many histograms and then comparing data and MC in each bin.
+This can be calculated numerically in a straightforward manner:
 
 \begin{enumerate}
   \item \label{it:first} Fill a set of histograms of the fiTQun cut variables using the atmospheric data.
@@ -674,14 +691,16 @@ same manner as a change in $\beta^{0}$.  This redundancy results in strong
 correlations between the $\beta^{0}$ and $\beta^{1}$ parameters.
 
 One way to deal with this issue is to modify the proposal function to include
-the expected parameter correlations.There are many ways to approach this
+the expected parameter correlations.  There are many ways to approach this
 problem, but one elegant way is to borrow the ideas from Differential Evolution
-Markov Chain Monte Carlo (DE-MCMC).  The strategy is to run in initial MCMC and
-record the difference $\Delta \theta$ in the parameters between each accepted
-point and some previously accepted point. The result is a sampling of the
-preferred directions in the parameter space. One can then sample from this 
-list of preferred directions to build a proposal function that includes all
-of the relevant correlations.  The overall approach is as follows:
+Markov Chain Monte Carlo (DE-MCMC).  A description of the algorithm can be
+found in, for example, the Braak2006~\cite{Braak2006}. The strategy adopted
+here is to run an initial MCMC and record the difference $\Delta \theta$ in the
+parameters between each accepted point and some previously accepted point. The
+result is a sampling of the preferred directions in the parameter space. One
+can then sample from this list of preferred directions to build a proposal
+function that includes all of the relevant correlations.  The overall approach
+is as follows:
 %
 \begin{enumerate}
   \item Run an initial Metropolis-Hastings MCMC to obtain a set of the

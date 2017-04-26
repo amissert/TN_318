@@ -154,6 +154,8 @@ number events that pass our selection criteria in three broad event categories:
   4 & Entering & True \wall $< 0$ \\
   \hline\hline
   \end{tabular}
+  \caption{List of the MC signal and background catagories that are used for each
+  T2K event selection in the fiducial volume optimizaton studies.}
   \label{tab:cat}
 \end{table}
 
@@ -166,7 +168,7 @@ procedure:
 \begin{enumerate}
   \item Choose a random sample histogram shape parameters from posterior Markov chain.
   \item Loop over the T2K MC events, and for each event directly modify the fiTQun cut variables
-    according to Equation\ref{eq:fqparmod}.
+    according to Equation~\ref{eq:fqparmod}.
   \item Check if the modified event passes any of the T2K event selection cuts,
     if it passes, add it to a running
     count of number events for each category in each detector region.
@@ -229,6 +231,45 @@ the shift error.
   \label{fig:fverrnue1rpi}
 \end{figure}
 
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{| c | c | c | c | c | c |}
+    \hline\hline
+    %T2K Sample & Detector Region & CCQE & CCnQE & CCMisID & NC\\
+    T2K Sample & Detector Region & \multicolumn{4}{|c|}{Fractional Uncertainty [\%] } \\
+    \cline{3-6}
+     &  & CCQE & CCnQE & CCMisID & NC \\
+    \hline
+    \multirow{6}{*}{$\nu_{e}$ CCQE}
+      & 0 & 3.8 & 5.3 & 25.0 & 31.5  \\ 
+      & 1 & 4.7 & 3.4 & 9.8  & 24.1  \\ 
+      & 2 & 2.6 & 3.9 & 11.8 & 29.2  \\ 
+      & 3 & 1.9 & 2.3 & 4.0  & 14.5  \\ 
+      & 4 & 4.6 & 4.7 & 7.45 & 24.6  \\ 
+      & 5 & 2.9 & 2.9 & 1.95 & 33.83 \\ 
+      \hline
+    \multirow{6}{*}{$\nu_{\mu}$ CCQE}
+      & 0 & 8.7 & 9.7 & 83.2 & 66.7 \\ 
+      & 1 & 2.4 & 2.5 & 69.8 & 31.6 \\ 
+      & 2 & 1.4 & 1.5 & 54.6 & 41.0 \\ 
+      & 3 & 1.8 & 1.7 & 27.1 & 58.1 \\ 
+      & 4 & 1.2 & 1.2 & 41.0 & 20.0 \\ 
+      & 5 & 1.7 & 1.6 & 74.9 & 19.7 \\ 
+      \hline
+    \multirow{6}{*}{$\nu_{e}$ CC1R$\pi$}
+      & 0 & 3.0 & 11.2 & 80.4 & 56.2  \\ 
+      & 1 & 6.0 & 5.4  & 16.8 & 25.3  \\ 
+      & 2 & 7.4 & 18.4 & 31.2 & 44.1  \\ 
+      & 3 & 4.0 & 4.3  & 13.4 & 37.8  \\ 
+      & 4 & 2.4 & 5.9  & 16.4 & 182.6 \\ 
+      & 5 & 5.3 & 3.8  & 16.6 & 232.7 \\ 
+    \hline
+  \end{tabular}
+  \caption{Table of the values of the fractional uncertainties shown in
+  Figures~\ref{fig:fverrnue}-~\ref{fig:fverrnue1rpi}.}
+  \label{tab:fverrs}
+\end{table}
+
 
 
 %-----------------------------------------------------------------------------
@@ -244,7 +285,7 @@ value less than zero, that is, an event where the vertex originates outside of
 the ID\@.  Although the outer detector (OD) is designed to veto these events,
 some entering backgrounds remain in the T2K samples.  These events mostly
 originate in the 55 cm ``dead region'' between the ID and OD optical barriers.
-Such events cannot be rejected by the OD, and due do limited reconstruction
+Such events cannot be rejected by the OD, and due to limited reconstruction
 resolution they may be reconstructed with a vertex inside the ID\@.  
 There are two main systematic uncertainties that we assign to these events:
 
@@ -261,12 +302,12 @@ normalized reconstructed \wall distributions have good agreement near the peak
 event density, but slightly worse agreement in the tails, with the data tending
 to reconstruct more events further away from the ID wall.  To address this, we
 impose an uncertainty as a function of reconstructed \wall that rises from
-$4\%$ to almost $50\%$ as shown in Figure~\ref{fig:enteringerr}.
+$4\%$ to almost $50\%$ as shown in Figure~\ref{fig:enteringwall}.
 
 The seconds systematic is estimated by extrapolating the density of
 fully-contained (FC) T2K events to the un-simulated dead region.  We find the
 un-simulated region contributes and additional $10\%$ to the entering
-background normalization (see Figure~\ref{fig:enteringerr}).  To account for
+background normalization (see Figure~\ref{fig:unsim}).  To account for
 this in the MC, we increase the overall normalization by $10\%$ and apply an
 additional conservative $20\%$ systematic uncertainty weight to cover
 additional uncertainties such as the OD efficiency very close to the optical barrier
@@ -277,15 +318,46 @@ entering events into the T2K event samples.
 
 \begin{figure}[h!t]
   \begin{center}
-    \includegraphics[width=0.4\textwidth]{entering_unc}
-    \includegraphics[width=0.4\textwidth]{entering_norm}
+    \includegraphics[width=0.4\textwidth]{cosmic_walldist}
+    \includegraphics[width=0.4\textwidth]{entering_wall_unc}
   \end{center}
-  \caption{Left plot shows the \wall-dependant systematic applied to account
-  for data/MC differences in how far into the ID entering backgrounds are
-  reconstructed.  Right plot shows the overall normalization increase applied
-  to all entering events from un-simulated dead region volume.}
-  \label{fig:enteringerr}
+  \caption{Left plot shows the normalized \wall distributions for stopping cosmic muons.  Red histogram
+  shows the MC simulation and black points show the data in each bin.  The right plot shows the absolute 
+  data/MC fractional difference.  The right plot is used to apply a \wall-dependant systematic uncertainty
+  for entering events.}
+  \label{fig:enteringwall}
 \end{figure}
+
+\begin{figure}[h!t]
+  \begin{center}
+    \includegraphics[width=0.4\textwidth]{unsim_region}
+    \includegraphics[width=0.4\textwidth]{unsim_region_extrap}
+  \end{center}
+  \caption{Left plot shows the true MC \wall distribution for entering T2K
+  events that are not rejected by the OD activity cuts.  The ID optical
+  boundary is at $\wall = 0$ cm.  The OD optical boundary is located at  $\wall
+  = -55$ cm. The region between the ID and the OD optical boundaries is the
+  so-called ``dead region''.  Only the inner 50 cm of the 55 cm dead region is
+  simulated in the MC simulation.  To account for this, the MC distribution is
+  extrapolated into the un-simulated region (red line on left plot).  The
+  extrapolation is then integrated to estimate the number of un-simulated
+  events.  The number of un-simulated events (red area on right plot) is 10\%
+  of the total number of entering events. This 10\% normalization increase is
+  accounted for when optimizing the detector fiducial volume.}
+  \label{fig:unsim}
+\end{figure}
+
+%\begin{figure}[h!t]
+%  \begin{center}
+%    \includegraphics[width=0.4\textwidth]{entering_unc}
+%    \includegraphics[width=0.4\textwidth]{entering_norm}
+%  \end{center}
+%  \caption{Left plot shows the \wall-dependant systematic applied to account
+%  for data/MC differences in how far into the ID entering backgrounds are
+%  reconstructed.  Right plot shows the overall normalization increase applied
+%  to all entering events from un-simulated dead region volume.}
+%  \label{fig:enteringerr}
+%\end{figure}
 
 
 
@@ -409,9 +481,9 @@ Table~\ref{tab:fvcuts}.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.45\textwidth]{hfom_nue}
-    \includegraphics[width=0.45\textwidth]{hfom_numu}
-    \includegraphics[width=0.45\textwidth]{hfom_nuecc1rpi}
+    \includegraphics[width=0.45\textwidth]{fom_nue}
+    \includegraphics[width=0.45\textwidth]{fom_numu}
+    \includegraphics[width=0.45\textwidth]{fom_nue1rpi}
   \end{center}
   \caption{Plots of the figure of merit for FV cut optimization at various
   $(towall,wall)$ points for each of the T2K event selections. The maximum value of the figure of merit with the
