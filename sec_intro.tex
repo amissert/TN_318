@@ -19,15 +19,15 @@ following observations:
   \item Studies of simulated data show the fiTQun reconstruction performance is not adversely affected
     in some detector regions rejected by the previous FV cut, which is 200 cm from the inner detector
     optical boundary.
-  \item A rigorous optimization of the FV cuts that tries to take systematic uncertainties into account
+  \item A rigorous optimization of the FV cuts in the presence of systematic uncertainties 
     has not been done before.
-  \item Approximately 30\% of the SK detector mass is located outside of the 200 cm FV cut.
-  \item The T2K experimental sensitivity is currently limited by statistical uncertainties.
+  \item Approximately 30\% of the SK detector mass is located outside of the 200 cm FV cut used in previous analyses.
+  \item The T2K experimental sensitivity is currently limited by the statistical uncertainty in the SK samples.
 \end{itemize}
 
 The most significant obstacle to performing this study is the
 estimation of the detector systematic uncertainties, which must be factored
-into the optimization somehow and may vary in different detector regions.
+into the optimization somehow, and may vary in the different detector regions.
 To address this problem, a fit to the SK
 atmospheric neutrino data is performed using Markov chain Monte Carlo (MCMC)
 techniques.  The result of this fit is a sampling of detector systematics
@@ -38,11 +38,12 @@ The detector systematics are then propagated to the fiTQun T2K event selections
 using toy Monte Carlo studies where samples of the post-fit systematics
 parameters are applied.  By allowing the detector systematic uncertainty
 parameters to vary independently in different SK detector regions, we can
-determine the impact of allowing events from the different regions into the T2K
-samples.  This information is used to determine the optimal fiducial volume
-cuts. Once the fiTQun FV and topological cuts are specified, a similar set of
-toy MC studies can be done to propagate the overall SK detector uncertainties
-to the oscillation analyses.
+estimate the systematic uncertainties in each region separately.  This allows
+us to determine the impact of allowing events from the different detector
+regions into the T2K samples.  We can then use this information to determine
+the optimal fiducial volume (FV) cuts.  Once the fiTQun FV and topological cuts are
+specified, a similar set of toy MC studies can be done to propagate the overall
+SK detector uncertainties to the oscillation analyses.
 
 The structure of this analysis is largely based on the previous fits to SK
 atmospheric data described in detail in, for example, T2K TN-186~\cite{tn186}.

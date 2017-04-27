@@ -91,11 +91,10 @@ mis-modeling of fundamental parameters in the MC most prominently manifests
 itself as shifts in the distributions of fiTQun reconstructed variables. This
 can be seen, for example, in the stopping cosmic muon data, where the muon and
 decay electrons exhibit a shift in the fiTQun electron/muon particle
-identification (PID) parameter.  Furthermore,
-significant shifts in the distributions of fiTQun variables are seen in regions
-of the detector near the ID wall.  Since we wish to estimate the systematics in
-these regions, it makes sense to directly fit for these shifts when comparing
-MC to data. 
+identification (PID) parameter.  Furthermore, significant shifts in the
+distributions of fiTQun variables are seen in detector regions near the ID
+wall.  Since we wish to estimate the systematics in these regions, it makes
+sense to directly fit for these shifts when comparing MC to data. 
 
 %\begin{figure}[hb]
 %  \begin{center}
@@ -110,7 +109,7 @@ MC to data.
 
 The parameterization of detector uncertainties was chosen without detailed
 knowledge of the actual data/MC discrepancies in the atmospheric data.  This
-helps to ensure that the parameterization is not tuned to specific
+was done to ensure that the parameterization is not tuned to specific
 discrepancies in the atmospheric data, which may arise from statistical
 fluctuations or other sources besides the mis-modeling of detector parameters
 that we are trying to measure.  
@@ -203,7 +202,7 @@ components are defined purely in terms of their visible rings (as opposed to
 the underlying interaction mode or particle type) since fiTQun is directly
 sensitive to this information.  The visible rings are counted by iterating
 through the simulated particles that exit the nucleus and identifying those
-that are above Cherenkov threshold.
+that are above the Cherenkov threshold ($\beta > \frac{1}{n})$.
 
 \begin{table}
   \centering
