@@ -19,8 +19,8 @@ The second category of FV-related detector uncertainties are those related to th
 of the FV cuts themselves.  The FV cut efficiencies are affected by detector systematics regarding
 the fiTQun vertex and direction resolution.  Since the vertex and direction uncertainties are not 
 directly addressed in the atmospheric neutrino fit, some additional data/MC comparisons must be done
-to estimate the error on these quantities.  Section~\ref{subsec:vtxunc} decribes these 
-uncertaintis and how they are applied to the T2K samples.
+to estimate the error on these quantities.  The results of these studies, as well as additional 
+errors related to the fiTQun sample, are described in TN-320[?].
 
 
 \subsection{T2K Event Selection Efficiency Uncertainties}
@@ -166,85 +166,86 @@ uncertainties for each category are shown in Figure~\ref{fig:skunc}.
   \label{tab:skerr}
 \end{table}
 
-\subsection{Vertex and Direction Reconstruction Uncertainties}
-\label{subsec:vtxunc}
 
-This section discribes a separate set of studies to estimate the detector
-systematics associated with the efficiency of the FV cuts.  The error on the FV
-cut efficiency depends on the data/MC agreement of the resolution of the vertex
-and direction resolutions near the ID wall.  To estimate these uncertainties,
-we use the stopping cosmic muon data and the associated MC simulation.  
-
-To get an estimate of the vertex uncertainty near the ID wall, we look at the
-\wall distributions of the entering cosmic muon events.  Since we know the
-events are entering, we know that the true \wall value as at $0$ cm.  The
-vertex residual distribution projected on to the \wall direction is therefore just the
-histogram of the reconstructed \wall values.  The normalized histograms for
-reconstructed \wall were shown previously in Figure~\ref{fig:enteringwall}.  We
-take the $68\%$ value of the cumulative distribution function
-to be the measure of the vertex resolution.  Comparing this between data
-and MC, we see a $2.5$ cm difference in the distribution widths.  
-
-From this $2.5$ cm data/MC discrepancy, we estimate the effect on each T2K
-sample by assuming the worst-case scenario: that each event has its vertex shifted
-$2.5$ cm in the \wall direction in the same way.  We run two toy experiments: one with
-the reconstructed \wall values for each event shifted by $+2.5$ cm and one 
-with the reconstructed \wall values for each event shifted by $-2.5$
-cm.  Comparing the difference between the two experiments, we estimate a
-maximum $0.43\%$ uncertainty in the number of events in each sample. 
-
-A similar study of the cosmic muons can be performed to estimate the
-uncertainty that is introduced by adding the direction-dependant \towall
-variable to define the FV cuts.  To find the systematic uncertainty for the
-direction resolution, we use cosmic ray muons and their associated decay
-electron. We use the direction vector that points from the muon vertex to the
-electron vertex as an independent measure of the muon direction, and we compare
-this vector to the reconstructed direction vector for the muon.  The data/MC
-distributions are shown in Figure~\ref{fig:dirres}.  By comparing the widths of
-these distributions for data and MC, we quote a systematic uncertainty for the
-direction resolution of $0.24$ degrees.  Once again, we apply this uncertainty
-assuming the worst-case scenario in which the direction uncertainty always
-causes the \towall value to shift in the same direction for each event.  If we
-shift the reconstructed direction by $0.24$ degrees in a way that increases
-\towall for each event, and compare this to case where we shift the
-reconstructed direction by $0.24$ degrees in a way that decreases \towall for
-each event, we find the expected shift to be less than $0.067\%$.  Since this
-is much smaller than the vertex uncertainty, we consider this systematic to be
-negligible.  The reason the direction error is so much smaller than the vertex
-error is that the data/MC agreement for the reconstructed direction is quite
-good, and the density of T2K events near the \towall cut is much less than the
-density of events near the \wall cut, so small shifts in the reconstructed
-\towall values do not greatly effect the overall size and composition of the T2K
-samples.
-
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{cosmic_dtheta}
-    \includegraphics[width=0.5\textwidth]{cosmic_dtheta_log}
-  \end{center}
-  \caption{Data/MC comparison of the $\Delta \theta$: the angle between the
-  reconstructed muon direction and the vector connecting the muon vertex to the
-  decay electron vertex.  The data MC agreement is quite good, with only a 0.24
-  degree difference in the distribution widths.}
-  \label{fig:dirres}
-\end{figure}
-
-\begin{table}
-  \centering
-  \begin{tabular}{l | l | l}
-    \hline\hline
-    T2K Selection & Vertex FV Systematic [\%] & Direction FV Systematic [\%] \\
-    \hline
-    $\nu_{e}$ & 0.43 & 0.022\\
-    $\nu_{\mu}$ & 0.31 & 0.037 \\
-    $\nu_{e}$ & 0.41 & 0.067 \\
-    \hline
-  \end{tabular}
-  \caption{Systematic uncertainties for the FV cut efficiencies estimated from
-  stopping cosmic muon studies.}
-  \label{tab:fverr}
-\end{table}
-
+%\subsection{Vertex and Direction Reconstruction Uncertainties}
+%\label{subsec:vtxunc}
+%
+%This section discribes a separate set of studies to estimate the detector
+%systematics associated with the efficiency of the FV cuts.  The error on the FV
+%cut efficiency depends on the data/MC agreement of the resolution of the vertex
+%and direction resolutions near the ID wall.  To estimate these uncertainties,
+%we use the stopping cosmic muon data and the associated MC simulation.  
+%An estimate of the vertex uncertainty near the ID wall is obtained by studying the
+%\wall distributions of the entering cosmic muon events.  Since we know the
+%events are entering, we know that the true \wall value as at $0$ cm.  The
+%vertex residual distribution projected on to the \wall direction is therefore just the
+%histogram of the reconstructed \wall values.  The normalized histograms for
+%reconstructed \wall were shown previously in Figure~\ref{fig:enteringwall}.  We
+%take the $68\%$ value of the cumulative distribution function
+%to be the measure of the vertex resolution.  Comparing this between data
+%and MC, we see a $2.5$ cm difference in the distribution widths. 
+%
+%
+%From this $2.5$ cm data/MC discrepancy, we estimate the effect on each T2K
+%sample by assuming the worst-case scenario: that each event has its vertex shifted
+%$2.5$ cm in the \wall direction in the same way.  We run two toy experiments: one with
+%the reconstructed \wall values for each event shifted by $+2.5$ cm and one 
+%with the reconstructed \wall values for each event shifted by $-2.5$
+%cm.  Comparing the difference between the two experiments, we estimate a
+%maximum $0.43\%$ uncertainty in the number of events in each sample. 
+%
+%A similar study of the cosmic muons can be performed to estimate the
+%uncertainty that is introduced by adding the direction-dependant \towall
+%variable to define the FV cuts.  To find the systematic uncertainty for the
+%direction resolution, we use cosmic ray muons and their associated decay
+%electron. We use the direction vector that points from the muon vertex to the
+%electron vertex as an independent measure of the muon direction, and we compare
+%this vector to the reconstructed direction vector for the muon.  The data/MC
+%distributions are shown in Figure~\ref{fig:dirres}.  By comparing the widths of
+%these distributions for data and MC, we quote a systematic uncertainty for the
+%direction resolution of $0.24$ degrees.  Once again, we apply this uncertainty
+%assuming the worst-case scenario in which the direction uncertainty always
+%causes the \towall value to shift in the same direction for each event.  If we
+%shift the reconstructed direction by $0.24$ degrees in a way that increases
+%\towall for each event, and compare this to case where we shift the
+%reconstructed direction by $0.24$ degrees in a way that decreases \towall for
+%each event, we find the expected shift to be less than $0.067\%$.  Since this
+%is much smaller than the vertex uncertainty, we consider this systematic to be
+%negligible.  The reason the direction error is so much smaller than the vertex
+%error is that the data/MC agreement for the reconstructed direction is quite
+%good, and the density of T2K events near the \towall cut is much less than the
+%density of events near the \wall cut, so small shifts in the reconstructed
+%\towall values do not greatly effect the overall size and composition of the T2K
+%samples.
+%
+%\begin{figure}[h]
+%  \begin{center}
+%    \includegraphics[width=0.5\textwidth]{cosmic_dtheta}
+%    \includegraphics[width=0.5\textwidth]{cosmic_dtheta_log}
+%  \end{center}
+%  \caption{Data/MC comparison of the $\Delta \theta$: the angle between the
+%  reconstructed muon direction and the vector connecting the muon vertex to the
+%  decay electron vertex.  The data MC agreement is quite good, with only a 0.24
+%  degree difference in the distribution widths.}
+%  \label{fig:dirres}
+%\end{figure}
+%
+%\begin{table}
+%  \centering
+%  \begin{tabular}{l | l | l}
+%    \hline\hline
+%    T2K Selection & Vertex FV Systematic [\%] & Direction FV Systematic [\%] \\
+%    \hline
+%    $\nu_{e}$ & 0.43 & 0.022\\
+%    $\nu_{\mu}$ & 0.31 & 0.037 \\
+%    $\nu_{e}$ & 0.41 & 0.067 \\
+%    \hline
+%  \end{tabular}
+%  \caption{Systematic uncertainties for the FV cut efficiencies estimated from
+%  stopping cosmic muon studies.}
+%  \label{tab:fverr}
+%\end{table}
+%
 
 %\begin{table}
 %  \centering
