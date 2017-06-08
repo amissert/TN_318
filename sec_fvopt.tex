@@ -143,15 +143,15 @@ number events that pass our selection criteria in three broad event categories:
 
 \begin{table}
   \centering
-  \begin{tabular}{l | l |l}
+  \begin{tabular}{l | l }
   \hline\hline
-  Category \# & Category Name & Definition \\
+  Category Name & Definition \\
   \hline
-  0 & CCQE & True CCQE interaction \\
-  1 & CCnQE & True CC interaction that is not CCQE \\
-  2 & CCmisID & True CC interaction from the wrong neutrino flavor \\
-  3 & NC & True NC interaction \\
-  4 & Entering & True \wall $< 0$ \\
+  CCQE & True CCQE interaction \\
+  CCnQE & True CC interaction that is not CCQE \\
+  CCmisID & True CC interaction from the wrong neutrino flavor \\
+  NC & True NC interaction \\
+  Entering & True \wall $< 0$ \\
   \hline\hline
   \end{tabular}
   \caption{List of the MC signal and background catagories that are used for each
@@ -185,7 +185,7 @@ This is referred to as the ``shift error'' and represents the size of the
 difference between the MC simulation and what we expect from data.  The second
 quantity is the square root of the variance of the distribution of toy
 experiments.  This is referred to as the ``fit error'' and represents the
-statistical uncertainty of our measurement of the deviation from the true MC
+uncertainty of our measurement of the deviation from the true MC
 value.  The total error in each detector region and for each MC category in
 Table~\ref{tab:cat} is then quoted as the quadrature sum of the fit error and
 the shift error. 

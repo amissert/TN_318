@@ -30,7 +30,7 @@ MCMC) the likelihood defined by:
 
 In this equation, $\mathbf{a}$ are the atmospheric neutrino flux parameters,
 $\mathbf{x_{atm}}$ are the atmospheric neutrino cross section parameters, and
-$\mathbf{M_{Atm-Sk}}$ is the observed SK atmospheric neutrino data. This
+$\mathbf{M_{Atm-Sk}e$ is the observed SK atmospheric neutrino data. This
 equation was obtained through general considerations of the T2K oscillation fit
 strategy as described in Section 2 of TN-186~\cite{tn186}.
 
@@ -301,7 +301,7 @@ describe the uncertainties.  The events with both small \wall and small
 \towall, (less than 300 cm) are isolated in the $j = 0$ FV bin.  Entering
 background events, and events with poor energy reconstruction are almost
 completely contained in the $j = 1$ FV bin.  The remaining region that with
-\wall < 200cm is divided into two \towall bins.  Each bin in
+\wall $< 200cm$ is divided into two \towall bins.  Each bin in
 Figure~\ref{fig:fvbindef} will receive an independent set of $\beta$ parameters
 that describe the fiTQun distribution shapes as described in
 Section~\ref{subsec:betapar}.
@@ -559,7 +559,7 @@ sum of $1,134$ terms:
   \centering
   \begin{tabular}{c|c|c}
    \hline\hline
-   $m$ & fiTQun Variable Name & Prior Constraint $\sigma_{\beta_{m}}$ \\
+   Cut Variable $m$ & Variable Name & Prior Constraint $\sigma_{\beta_{m}}$ \\
    \hline\hline
    0 & $e/\mu$ PID & 200 \\
    1 & $e/\pi^{0}$ PID & 200 \\
@@ -742,7 +742,8 @@ Figure~\ref{fig:burnin}.
 \caption{Comparison of the burn-in period using an uncorrelated Gaussian
 proposal fuction (red) and a proposal function that takes into account
 parameter correlations using the DE-MCMC method (blue).  Both chains have been
-tuned achieve an accpetance rate of $0.25\%$.}
+tuned achieve an accpetance rate of $0.25\%$.  Both chains start at a the same
+non-mimimal random starting point in the parameter space.}
 \label{fig:burnin}
 \end{figure}
 
