@@ -9,12 +9,20 @@
 
 The main objective of the atmospheric neutrino fit is to estimate a set of
 systematic error parameters related to the fiTQun reconstruction performance,
-which we denote as \ldsk.  The \ldsk parameters should encode the differences 
+which we denote as \ldsk.  The \ldsk parameters should encode the differences
 we expect to observe between running fiTQun on SK data and MC simulation.
-Since these systematic differences arise in principle from fundamental mis-modeling of SK detector properties,
-we refer them as SK ``detector uncertainties'' and we assume that the differences we observe
-between the atmospheric data and atmospheric MC are representative of the differences between the
-T2K data and T2K MC. 
+Since these systematic differences arise in principle from fundamental
+mis-modeling of SK detector properties, we refer them as SK ``detector
+uncertainties'', and we assume that the differences we observe between the
+atmospheric data and atmospheric MC are representative of the differences
+between the T2K data and T2K MC.
+
+It should be noted that the SK detector has been extensively calibrated, and
+the detector simulation is tuned to the calibration data to obtain generally
+good agreement between data and MC~\cite{skcalib}.  Nevertheless, no detector
+simulation provides a perfect description of reality, and any small differences
+that exist must be quantified so that they may be accounted for in the final
+physics analyses.
 
 To estimate the values of the SK detector systematics parameters, we compare
 the MC predictions with various \ldsk parameters applied to the SK atmospheric
@@ -29,8 +37,10 @@ MCMC) the likelihood defined by:
 \end{equation}
 
 In this equation, $\mathbf{a}$ are the atmospheric neutrino flux parameters,
-$\mathbf{x_{atm}}$ are the atmospheric neutrino cross section parameters, and
-$\mathbf{M_{Atm-Sk}e$ is the observed SK atmospheric neutrino data. This
+$\mathbf{x_{atm}}$ are the atmospheric neutrino cross section parameters,
+$\mathbf{M_{Atm-Sk}}$ is the observed SK atmospheric neutrino data, and
+the distributions $\pi(\mathbf{a})$, $\pi(\mathbf{x_{atm}})$, and $\pi(\dsk)$ 
+represent the prior information on the systematic uncertainty parameters. This
 equation was obtained through general considerations of the T2K oscillation fit
 strategy as described in Section 2 of TN-186~\cite{tn186}.
 
@@ -144,10 +154,10 @@ detector uncertainties to the T2K analysis.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.5\textwidth]{tn186EnuXsec}
+    \includegraphics[width=0.65\textwidth]{tn186EnuXsec}
   \end{center}
   \caption{Dependence of the CCQE cross section uncertainty $\alpha_{CCQE}$ on
-  the true neutrino energy.}
+  the true neutrino energy as described in TN-186~\cite{tn186}.}
   \label{fig:alphaccqe}
 \end{figure}
 
@@ -164,7 +174,7 @@ affects only the events of the given ``Event Class'' in Table~\ref{tab:alpha}.
     \hline\hline
     n & Event Class & Parameter & Type & Prior Uncertainty $(\sigma_{\alpha})$ \\
     \hline 
-    1 & $E_{\nu} <$ 1 GeV & $\alpha_{NormLowE}$ & Flux normalization & 0.25 \\
+    0 & $E_{\nu} <$ 1 GeV & $\alpha_{NormLowE}$ & Flux normalization & 0.25 \\
     1 & $E_{\nu} >$ 1 GeV & $\alpha_{NormHighE}$ & Flux normalization & 0.15 \\
     2 & CCQE & $\alpha_{CCQE}$ & Cross section & Figure~\ref{fig:alphaccqe} \\
     3 & CCnQE & $\alpha_{CCnQE}$ & Cross section & 0.20 \\
@@ -247,8 +257,8 @@ wall.  The definitions are sketched out in Figure~\ref{fig:fvdiag}.
   \end{center}
   \caption{Graphical illustration of the definitions of the \wall and \towall variables
   that are cut on for the fiTQun FV cuts.  The \wall variable is the minimum distance between
-  the reconstructed vertex and the ID wall, and the \towall variable is the distance along the 
-  reconstructed particle track to the ID wall.}
+  the reconstructed vertex and the ID wall, and the \towall variable is the distance between the
+  vertex and the ID wall measured by traveling along the direction of the particle track.}
   \label{fig:fvdiag}
 \end{figure}
 
@@ -258,7 +268,7 @@ well-imaged rings. Events that are close to the ID wall, but point inwards
 (small \wall but large \towall), generally hit enough tubes to have a
 well-imaged Cherenkov ring.  On the other hand, events that are close to the ID
 wall but point towards the wall (small \wall and small \towall), generally hit
-too few PMTS, and as a result have poorly imaged Cherenkov rings and may have to
+too few PMTs, and as a result have poorly imaged Cherenkov rings and may have to
 be cut from the T2K sample.
 
 \begin{table}
@@ -267,7 +277,7 @@ be cut from the T2K sample.
     \hline\hline
     Detector Region $j$ & Min. \towall & Max. \towall & Min. \wall & Max. \wall \\
     \hline\hline
-    0 & 0cm    & 300  cm  & 0    cm & 300 cm \\
+    0 & 0 cm    & 300  cm  & 0    cm & 300 cm \\
     1 & 300 cm & 5000 cm  & 0    cm & 80   cm \\
     2 & 300 cm & 800  cm  & 80   cm & 200 cm \\
     3 & 800 cm & 5000  cm & 80   cm & 200 cm \\
@@ -338,8 +348,8 @@ based on these samples. Instead, we introduce an overall normalization
 parameter for each sample, denoted as $\gamma_{j,l}$, that scales the total
 number of events for the $l$-th sample in the $j$-th detector region bin.  The systematic 
 uncertainties associated with the decay electron tagging efficiency have been
-evaluated with a a separate study on stopping cosmic muon data and are
-described in TN-217~\cite{tn317}.
+evaluated with a separate study on stopping cosmic muon data and are
+described in TN-326.~\cite{tn326}.
 
 \begin{table}
   \centering
@@ -347,9 +357,9 @@ described in TN-217~\cite{tn317}.
     \hline\hline
     Sample $l$ & Cut \\
     \hline
-    1 & fqnse = 1 \\
-    2 & fqnse = 2 \\
-    3 & fqnse $>$ 2 \\
+    0 & fqnse = 1 \\
+    1 & fqnse = 2 \\
+    2 & fqnse $>$ 2 \\
     \hline\hline
   \end{tabular}
   \caption{The sample cuts that are applied to both data and MC events. The
@@ -372,8 +382,7 @@ described in TN-217~\cite{tn317}.
 \caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $l = 0$
 sample (no decay electrons) in all of the detector regions described in
 Section~\ref{subsec:DR}.  In this sample, the single ring electron component
-(defined in Section~\ref{subsec:components}) is emphasized. 
-\towall.}
+(defined in Section~\ref{subsec:components}) is dominant.}
 \label{fig:samplot0}
 \end{figure}
 
@@ -389,9 +398,8 @@ Section~\ref{subsec:DR}.  In this sample, the single ring electron component
 \end{tabular} 
 \caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $l = 1$
 sample (one decay electron) in all of the detector regions described in
-Section~\ref{subsec:DR}.  In this sample, the single ring muon and multi-ring
-electron components (defined in Section~\ref{subsec:components}) are
-emphasized.}
+Section~\ref{subsec:DR}.  In this sample, the single ring muon 
+component (defined in Section~\ref{subsec:components}) is dominant.}
 \label{fig:samplot1}
 \end{figure}
 
@@ -407,8 +415,8 @@ emphasized.}
 \end{tabular} 
 \caption{MC distributions of the fiTQun $e/\mu$ PID parameter for the $l=2$ 
 sample (more than one decay electron) in all of the detector regions described in
-Section~\ref{subsec:DR}.  In this sample, the multi-ring muon component
-(defined in Section~\ref{subsec:components}) is emphasized.}
+Section~\ref{subsec:DR}.  In this sample, the multi-ring muon components
+(defined in Section~\ref{subsec:components}) are dominant.}
 \label{fig:samplot2}
 \end{figure}
 \FloatBarrier
@@ -515,7 +523,7 @@ bin, as well as to emphasize the regions near the T2K cut values, where any
 shift will have the largest impact on the size and composition of the event
 samples.  The exact histogram ranges and bin size can be seen most readily in 
 Figures~\ref{fig:fitresults_samp0_att0}-~\ref{fig:fitresults_samp2_att3} found in 
-Section~\ref{sec:fitresults}.
+Section~\ref{sec:fithistos}.
 
 The remaining terms in the likelihood are the priors for each of the fit
 parameters.  We assume each prior is a Gaussian shape with some width
@@ -636,19 +644,18 @@ independent throws from the likelihood, which provides a powerful tool for
 propagating uncertainties.  This is due to the fact that if we have some
 quantity $X$ that depends on $\theta$ (such as the number of events passing
 some set of selection criteria), we can easily calculate the expectation over
-$\theta$ as as an average over some number $M$ of MCMC points:
+$\theta$ as an average over some number $M$ of MCMC points:
 %
 \begin{equation}
   \label{eq:mcmcexp}
-  \langle X \rangle_{\theta} = \frac{1}{M}\sum\limits_{i=0}^{M}X(\theta_{i})
+  \langle X \rangle_{\theta} = \frac{1}{M}\sum\limits_{i=0}^{M}X(\theta_{i}).
 \end{equation}
 %
 This expectation can then be compared to the nominal simulated value of $X$ to
 quote a systematic uncertainty.
 
 The MCMC in this fit uses the Metropolis-Hastings algorithm, described
-in detail in the PDG and TN-140.  The procedure is as follows:
-
+in detail in Section 3.7.3 of TN-186.  The procedure is as follows:
 \begin{enumerate}
   \item Determine a distribution $Q(\theta|\theta_{0})$ that assigns a
     probability to each point $\theta$ given the current point $\theta_{0}$.
@@ -661,7 +668,6 @@ in detail in the PDG and TN-140.  The procedure is as follows:
   \item If $u<\Omega$, accept this proposal and return to Step 1 with $\theta_{0} = \theta$ 
   \item If $u>\Omega$, reject this proposal and return to Step 1 with $\theta_{0} = \theta_{0}$ 
 \end{enumerate}
-
 In practice, we first select an initial starting point $\theta_{0}$ by
 minimizing the likelihood using MINUIT\@.  We then profile the likelihood for
 each fit parameter $\theta^{i}$ to obtain a rough estimate of how sensitive the
@@ -693,11 +699,11 @@ One way to deal with this issue is to modify the proposal function to include
 the expected parameter correlations.  There are many ways to approach this
 problem, but one elegant way is to borrow the ideas from Differential Evolution
 Markov Chain Monte Carlo (DE-MCMC).  A description of the algorithm can be
-found in, for example, the Braak2006~\cite{Braak2006}. The strategy adopted
-here is to run an initial MCMC and record the difference $\Delta \theta$ in the
-parameters between each accepted point and some previously accepted point. The
-result is a sampling of the preferred directions in the parameter space. One
-can then sample from this list of preferred directions to build a proposal
+found in~\cite{Braak2006}. The strategy adopted here is to run an initial MCMC
+and record the difference $\Delta \theta$ in the parameters between each
+accepted point and some previously accepted point. The result is a sampling of
+the preferred directions in the parameter space (see Fig.~\ref{fig:parcor}).
+One can then sample from this list of preferred directions to build a proposal
 function that includes all of the relevant correlations.  The overall approach
 is as follows:
 %
@@ -706,16 +712,16 @@ is as follows:
     accepted point differences.  
   \item Choose a random element $\Delta \theta$ from the set of accepted point
     differences generated in Step 1.
-  \item Choose a random perturbation $\delta$ (should be small compared to the characeristic
+  \item Choose a random perturbation $\delta$ (should be small compared to the characteristic
     $\Delta \theta$ step size).
   \item Given some initial point $\theta_{0}$ propose the next point $\theta$
     according to: $\theta = \theta_{0} + a \Delta \theta + \delta$. Where $a$ is some scaling factor that is
-    tuned so the accpetance rate is $\approx 0.25$.
+    tuned so the acceptance rate is $\approx 0.25$.
 \end{enumerate}
 %
 By defining the proposal function in this way, we are able to sample from the
 parameter space much more efficiently. This results in the MCMC converging much
-more quickly to the paramters that minimize the likelihood, as can been seen in
+more quickly to the parameters that minimize the likelihood, as can been seen in
 Figure~\ref{fig:burnin}.
 
 
@@ -729,7 +735,7 @@ Figure~\ref{fig:burnin}.
   single-ring electron $e/\mu$ PID variable in Detector Region 6.  Note
   the strong correlations between the two parameters coming from the fact that
   the effects of varying these parameters partially cancel.  Lower plot shows
-  the histogram of the accpeted parameter differences.  The DE-MCMC method
+  the histogram of the accepted parameter differences.  The DE-MCMC method
   draws from the lower distribution to better sample these correlated parameters.}
   \label{fig:parcor}
 \end{figure}
@@ -737,12 +743,12 @@ Figure~\ref{fig:burnin}.
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{plt_burnin}
+\includegraphics[width=0.5\textwidth]{plt_demcmc_converge}
 \end{center}
 \caption{Comparison of the burn-in period using an uncorrelated Gaussian
-proposal fuction (red) and a proposal function that takes into account
+proposal function (red) and a proposal function that takes into account
 parameter correlations using the DE-MCMC method (blue).  Both chains have been
-tuned achieve an accpetance rate of $0.25\%$.  Both chains start at a the same
+tuned achieve an acceptance rate of $0.25\%$.  Both chains start at the same
 non-mimimal random starting point in the parameter space.}
 \label{fig:burnin}
 \end{figure}
