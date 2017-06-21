@@ -20,30 +20,31 @@ of the FV cuts themselves.  The FV cut efficiencies are affected by detector sys
 the fiTQun vertex and direction resolution.  Since the vertex and direction uncertainties are not 
 directly addressed in the atmospheric neutrino fit, some additional data/MC comparisons must be done
 to estimate the error on these quantities.  The results of these studies, as well as additional 
-errors related to the fiTQun sample, are described in TN-320[?].
+errors related to the fiTQun sample, are described in TN-326~\cite{tn326}.
 
 
 \subsection{T2K Event Selection Efficiency Uncertainties}
 \label{subsec:skselect}
 
-With the fiTQun topological selections specified in TN-319~\cite{tn319} and the FV cuts
-for each selection specified in Section~\ref{subsec:fvresults}, all of the necessary
-cuts for T2K event samples have been defined.  In this section, we address the
-problem of estimating the detector systematic uncertainties for the selection efficiency of each sample.
-The overall procedure here follows closely that of previous analyses such
-as TN-186 and the toy MC studies of Section~\ref{subsec:fvunc}.  First, the
-results of the atmospheric fit are applied to the T2K
-event selections using toy MC studies. The result of this study is a covariance
-matrix of the uncertainties for various MC event categories and in various
-visible energy regions.  This covariance matrix is then used as an input to
-another toy MC study that adds contributions from additional uncertainties to
-produce the final SK detector errors for the fiTQun samples.  This section will
-focus on the initial covariance matrix generated from the atmospheric neutrino
-fit described in Section~\ref{sec:fitresults}.  Details of how the final SK
-detector systematics are calculated can be found in TN-317~\cite{tn317}.
+With the fiTQun topological selections specified in TN-319~\cite{tn319} and the
+FV cuts for each selection specified in Section~\ref{subsec:fvresults}, all of
+the necessary cuts for T2K event samples have been defined.  In this section,
+we address the problem of estimating the detector systematic uncertainties for
+the selection efficiency of each sample.  The overall procedure here follows
+closely that of previous analyses such as TN-186 and the toy MC studies of
+Section~\ref{subsec:fvunc}.  First, the results of the atmospheric fit are
+applied to the T2K event selections using toy MC studies. The result of this
+study is a covariance matrix of the uncertainties for various MC event
+categories and in various visible energy regions.  This covariance matrix is
+then used as an input to another toy MC study that adds contributions from
+additional uncertainties to produce the final SK detector errors for the fiTQun
+samples.  This section will focus on the initial covariance matrix generated
+from the atmospheric neutrino fit described in Section~\ref{sec:fitresults}.
+Details of how the final SK detector systematics are calculated can be found in
+TN-317~\cite{tn317}.
 
 To generate the detector uncertainties from the atmospheric neutrino fit, we
-perform a toy MC study were we once again draw samples from the post-fit Markov
+perform a toy MC study where we once again draw samples from the post-fit Markov
 chain and apply them to various selected MC categories.  The categories are
 taken from TN-186 and are defined in Table~\ref{tab:errcat}. The quantity to
 be estimated for each event category is the fractional efficiency of the ``core''
@@ -78,7 +79,7 @@ below:
     int Table~\ref{tab:errcat} and in various visible energy bins.
 \end{enumerate}
 
-The correlation matrix obtained by through executing this procedure can be seen
+The correlation matrix obtained by executing this procedure can be seen
 in Figure~\ref{fig:skcorr}.  Strong correlations are present between the
 visible energy bins of each category.  This comes from the detector error
 parameters not having an explicit visible energy dependence, which results in
@@ -87,9 +88,33 @@ efficiency uncertainty for the \nue samples comes almost entirely from the
 variations of the fiTQun $\pi^{0}$ likelihood distribution when the $\beta$
 parameters are applied.  Since the $\pi^{0}$ cut is not applied to the \numu
 samples, the \numu uncertainties are much smaller and the variations
-in the fiTQun $e/\mu$, $\mu/\pi$, and $1R/2R$ likelihoods contriubte roughly equally to the
+in the fiTQun $e/\mu$, $\mu/\pi$, and $1R/2R$ likelihoods contribute roughly equally to the
 total uncertainty.  The overall
 uncertainties for each category are shown in Figure~\ref{fig:skunc}.
+
+It should be noted that although the procedures from TN-186 are followed to
+generate the uncertainties, there are fundamental differences in how the two
+fits are performed that makes it difficult to directly compare the results.
+The most important difference is in how the systematics parameters are fit to
+the atmospheric data.  In TN-186, only the numbers of events that either pass
+or fail each of the topological cuts are used to evaluate the likelihood.  This
+effectively compares the distributions of the cut variables in only two bins,
+one for events passing some pre-defined cut, and one for those failing the cut.
+As a result, the $\beta$ parameters in TN-186 do not represent literal
+``shifts'' in the cut variable distributions, they are treated more like
+effective parameters that determine how many events migrate between the
+samples. 
+
+On the other hand, for this analysis we adopt the approach of interpreting the
+$\beta$ parameters as literal shifts in the cut variable distributions, and we
+enforce this interpretation by comparing the distribution shapes (i.e. using
+more than just two bins) when evaluating the likelihood of particular values of
+$\beta$.  This provides a stronger constraint on the sizes of the shifts of the
+detector systematics parameters.  As a result, the quoted uncertainties tend to
+be smaller than those reported in TN-186.  This is especially for the \Pnum
+samples at high energies, where the events tend to be distributed far from the
+cut values, so anything short of a very large shift will have little effect on
+the number of events passing the cut.
 
 \begin{table}
   \centering

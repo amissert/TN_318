@@ -95,7 +95,7 @@ expressed as:
 %
 Where we see the first term in Equation~\ref{eq:lderiv} vanishes since X varies
 symmetrically about the true mean.  We now make the assumption that the total
-uncertainty can be expressed as a quadrature sum the Poisson statistical
+uncertainty can be expressed as a sum in quadrature of the Poisson statistical
 uncertainty and the systematic uncertainty inherent to our measurement, so
 $\sigma^{2} = N + \sigma^{2}_{syst}$.  The expected curvature then becomes:
 %
@@ -138,8 +138,9 @@ various \wall and \towall regions according to Section~\ref{subsec:DR}.  This
 binning was chosen to isolate regions where the detector systematics may differ
 from those near the center of the tank, while also being large enough to
 provide a constraint from limited atmospheric neutrino data.  In each detector
-region, we break down the systematic uncertainty as the uncertainty in the
-number events that pass our selection criteria in three broad event categories: 
+region, we break down the systematic uncertainty as the fractional uncertainty in the
+number events that pass our selection criteria in five broad event categories 
+defined in Table~\ref{tab:cat}.
 
 \begin{table}
   \centering
@@ -154,8 +155,8 @@ number events that pass our selection criteria in three broad event categories:
   Entering & True \wall $< 0$ \\
   \hline\hline
   \end{tabular}
-  \caption{List of the MC signal and background catagories that are used for each
-  T2K event selection in the fiducial volume optimizaton studies.}
+  \caption{List of the MC signal and background categories that are used for each
+  T2K event selection in the fiducial volume optimization studies.}
   \label{tab:cat}
 \end{table}
 
@@ -186,9 +187,10 @@ difference between the MC simulation and what we expect from data.  The second
 quantity is the square root of the variance of the distribution of toy
 experiments.  This is referred to as the ``fit error'' and represents the
 uncertainty of our measurement of the deviation from the true MC
-value.  The total error in each detector region and for each MC category in
-Table~\ref{tab:cat} is then quoted as the quadrature sum of the fit error and
-the shift error. 
+value.  The total error in each detector region and for each MC category are
+then quoted as the sum in quadrature of the fit error and
+the shift error.  These errors are shown in Figures~\ref{fig:fverrnue}-\ref{fig:fverrnue1rpi}
+and listed in Table~\ref{tab:cat}.
 
 \begin{figure}[h]
   \begin{center}
@@ -292,8 +294,8 @@ There are two main systematic uncertainties that we assign to these events:
 \begin{enumerate}
   \item A \wall-dependant systemaic uncertainty to account for data/MC differences in 
     how far into the ID the entering events are reconstructed.
-  \item An overall normalization uncertatinty that accounts for data/MC
-    differences in the absolute number of entering events
+  \item An overall normalization uncertatinty that accounts for un-simulated MC events
+    in the ``dead region.''
 \end{enumerate}
 
 The first systematic is estimated by checking the data/MC differences in the
@@ -406,8 +408,8 @@ sensitive to some potential systematics that are difficult to quantify, such
 as:
 %
 \begin{itemize}
-  \item Un-simulated PMT structure near the ID wall and in the so-called ``dead region'' between the ID and the OD.
-  \item Un-simulated ``dead region'' volume.
+  \item Un-simulated PMT structure near the ID wall and in the so-called ``dead
+    region'' between the ID and the OD.
   \item Effect of PMTs protruding into the SK ID volume.
   \item Assumption of a smoothly cylindrical detector geometry in the MC
     simulation, as opposed to the actual SK geometry consisting of multiple
@@ -487,7 +489,7 @@ Table~\ref{tab:fvcuts}.
   \end{center}
   \caption{Plots of the figure of merit for FV cut optimization at various
   $(towall,wall)$ points for each of the T2K event selections. The maximum value of the figure of merit with the
-  constraint $\wall \geq 50 cm$ is used to determine the fiTQun FV cuts listed in
+  constraint $\wall \geq 50 \text{cm}$ (and $\towall \geq 150 \text{cm}$) is used to determine the fiTQun FV cuts listed in
   Table~\ref{tab:fvcuts}}
   \label{fig:fom}
 \end{figure}
@@ -541,23 +543,22 @@ a looser \wall cut since the NC background is less problematic.
 
 For the selected \numu events, the signal and background distributions are
 noticeably different.  The key difference in this case is that there is no
-sharp peak in the background events at small \towall values.  This combined
-with the fact that there is a slow tapering off in the density of selected
-\numu events at small \towall results in a very loose constraint on the optimal
-\towall cut.  This can be seen in the plots of the figure of merit shown in
-Figure~\ref{fig:fom}.  In the absence of large peaks in the backgrounds, the
-\numu \towall cut is determined by the systematic uncertainty on the signal in
-the small \towall regions.  Since these uncertainties are generally less
-constrained in the small \towall regions due to lack of statistics, the optimization disfavors
-the small \towall region as well.
+sharp peak in the background events at small \towall values.  This results in a
+very loose constraint on the optimal \towall cut, which can be seen in the
+plots of the figure of merit shown in Figure~\ref{fig:fom}.  In the absence of
+large peaks in the backgrounds, the \numu \towall cut is influenced primarily by the
+systematic uncertainty on the signal in the small \towall regions.  Since these
+uncertainties are generally less constrained in the small \towall regions due
+to lack of statistics, the optimization disfavors the small \towall region as
+well.
 
 It is interesting to note that although none of the FV cuts were tuned ``by
-hand'' by explicitly checking the \towall and \wall distributions, the
-optimized cuts for each sample manage to avoid regions with very large and/or
-very uncertain backgrounds.  This seems to imply that the figure of merit
-expressed in Equation~\ref{eq:fom} provides a fairly robust way of quantifying
-the trade-offs between statistics, purity, and uncertainty.  Additional
-information about the event composition for each T2K sample can be found in
+hand'' by examining the \towall and \wall distributions, the optimized cuts for
+each sample manage to avoid regions with very large and/or very uncertain
+backgrounds.  This seems to imply that the figure of merit expressed in
+Equation~\ref{eq:fom} provides a fairly robust way of quantifying the
+trade-offs between statistics, purity, and uncertainty.  Additional information
+about the event composition for each T2K sample can be found in
 TN-319~\cite{tn319}.
 
 \FloatBarrier
