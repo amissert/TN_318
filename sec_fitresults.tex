@@ -5,7 +5,11 @@
 
 Following the approach outlined in the previous section, we fit all 288
 parameters for the atmospheric flux, cross section, and detector systematics to
-the atmospheric data by running a sequence of Markov chains.  An initial MCMC is
+the atmospheric data.  The data set includes runs 617-735, and was
+reconstructed using fiTQun v4r0.  The MC data was simulated using SKDETSIM
+13p90 and NEUT 5.3.2, and was also reconstructed using fiTQun v4r0.
+
+The fit is performed by running a sequence of Markov chains.  An initial MCMC is
 performed with approximately two million steps to build up the distributions of
 the differential parameters.  We then draw from these distributions when running
 an additional two million steps of DE-MCMC\@.  The final output of this fit is 
@@ -15,7 +19,7 @@ be found in Section~\ref{sec:postfit}.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.7\textwidth]{hcorr_full_labeled}
+    \includegraphics[width=0.7\textwidth]{atmfit_cor}
   \end{center}
   \caption{Correlation matrix for all 288 parameters in the atmospheric fit.
   The labeled regions correspond to the SK detector regions defined in
